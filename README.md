@@ -1,4 +1,5 @@
 # LinkLab
+<<<<<<< HEAD
 
 An original URL service with a private dashboard, isolated reliability checks, and an inspectable engineering record. Built for the AI-proficient software engineering assignment.
 
@@ -96,3 +97,7 @@ The hosting adapter expects Sites dispatch to authenticate visitors and supply t
 ## Originality and dependencies
 
 The application, domain rules, SQL, tests, visual design, and engineering documents were authored for this project. No third-party URL-shortener implementation was imported. Framework scaffolding and standard packages provide rendering, deployment, icons, schema generation, and development tools; their licenses remain applicable. Unused scaffold UI components and packages were removed. See [dependency notes](docs/DEPENDENCIES.md).
+=======
+A URL shortener lab. 
+An original URL service with a private dashboard, isolated reliability checks, and an inspectable engineering record. Built for the AI-proficient software engineering assignment.
+>>>>>>> ee827338e085b4eec03c392a0c9776532945c8ad
