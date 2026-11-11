@@ -76,18 +76,3 @@ Creation and revocation commit together with their audit events. A failed audit 
 
 Analytics are **best effort**. A background database write failure is logged and does not prevent the redirect. Counts include bots and repeated GETs, exclude HEAD, and do not prove the destination was visited. The display window is today plus six preceding UTC calendar dates. No IP address, user agent, referrer, cookie identifier, or unique-person estimate is stored.
 
-## Review and deployment
-
-Read [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md), [operations](docs/OPERATIONS.md), and [the machine-readable API](docs/openapi.json). The three required assignment scenarios are in `docs/scenarios/`.
-
-The hosting adapter expects Sites dispatch to authenticate visitors and supply trusted identity headers. **Never expose this Worker directly on a public `workers.dev` endpoint.** A standalone deployment requires a verified identity gateway and must strip untrusted incoming identity headers. An arbitrary reverse proxy is insufficient.
-
-`docs/evidence/AI-EXECUTION.md` indexes preserved instructions, artifact-based retrospective records and current task evidence. No engineer approval or multi-day history is fabricated. The owner should review the code, run the checks, and fill in `docs/REVIEW-SIGNOFF.md` before representing the work as personally reviewed.
-
-## Originality and dependencies
-
-The application, domain rules, SQL, tests, visual design, and engineering documents were authored for this project. No third-party URL-shortener implementation was imported. Framework scaffolding and standard packages provide rendering, deployment, icons, schema generation, and development tools; their licenses remain applicable. Unused scaffold UI components and packages were removed. See [dependency notes](docs/DEPENDENCIES.md).
-=======
-A URL shortener lab. 
-An original URL service with a private dashboard, isolated reliability checks, and an inspectable engineering record. Built for the AI-proficient software engineering assignment.
->>>>>>> ee827338e085b4eec03c392a0c9776532945c8ad
