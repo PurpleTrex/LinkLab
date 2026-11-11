@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1794285194880,
+      "tag": "0000_nosy_silverclaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1794285391912,
+      "tag": "0001_sticky_marvel_zombies",
+      "breakpoints": true
+    }
+  ]
+}

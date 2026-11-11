@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-11-10T06:55:40.923569+00:00",
+  "scope": "Evidence input-drift negative control, followed by restoration.",
+  "alteredInputExit": 1,
+  "alteredInputRejected": true,
+  "restoredInputExit": 0,
+  "restoredInputAccepted": true
+}

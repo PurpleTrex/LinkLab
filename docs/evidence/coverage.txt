@@ -1,0 +1,75 @@
+
+> linklab@1.0.0 test:coverage
+> node --experimental-transform-types --experimental-test-coverage --test tests/*.test.ts
+
+(node:224) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ greenfield: create, resolve, replay and protect owner boundaries (16.236962ms)
+✔ input rejects executable schemes, credentials, IPs, local hosts, loops and unknown fields (1.411318ms)
+(node:225) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ HTTP lifecycle creates, redirects, counts GET, ignores HEAD, revokes and returns 410 (28.182755ms)
+✔ management endpoints reject missing identity, cross-origin writes and non-owner access (5.381304ms)
+✔ HTTP rejects unsupported methods, malformed JSON, oversized body, unknown fields and invalid keys (4.794429ms)
+✔ safe problem responses and logs do not leak destination query strings or stack traces (2.693791ms)
+✔ database failures fail closed with a generic 503 (1.37967ms)
+✔ liveness remains available without database while readiness fails (0.626525ms)
+✔ head errors contain no body (1.148442ms)
+✔ idempotency response headers distinguish creation, replay and changed payload (4.633786ms)
+✔ analytics failure cannot replace redirect response; HEAD never calls sink (2.187679ms)
+✔ body size is bounded even without Content-Length (1.813424ms)
+✔ SQL-like input stays data and cannot alter schema (2.855906ms)
+✔ browser navigation receives a safe, human-readable unavailable page (1.569387ms)
+(node:226) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ twenty concurrent custom-alias requests produce one link and one audit event (13.886629ms)
+✔ twenty concurrent idempotent retries return one resource (2.619139ms)
+✔ generated aliases retry a collision and stop after five failures (2.697948ms)
+✔ audit failure rolls back link creation atomically (1.542075ms)
+✔ expiry boundary, revocation, ownership and stale version are enforced (2.025404ms)
+✔ audit failure rolls back revocation (1.268803ms)
+✔ cursor pagination does not lose links with equal creation timestamps (2.854583ms)
+✔ analytics uses exactly seven UTC dates and preserves owner boundaries (3.206264ms)
+✔ atomic rate counter rejects excess requests and resets at minute boundary (1.078847ms)
+✔ brownfield migration preserves existing rows and gives safe lifecycle defaults (0.695218ms)
+✔ expiry representation rejects invalid and excessively distant values (0.797933ms)
+✔ random alias generator produces valid full-length values (6.794605ms)
+✔ reliability lab: collision passes and cleans its fixtures (2.649215ms)
+✔ reliability lab: idempotency passes and cleans its fixtures (1.18085ms)
+✔ reliability lab: expiration passes and cleans its fixtures (1.218717ms)
+✔ reliability lab: analytics passes and cleans its fixtures (2.654052ms)
+✔ reliability lab: destination passes and cleans its fixtures (0.874148ms)
+✔ idempotent replay still succeeds after the link expires (1.410687ms)
+✔ v1 request fingerprints remain compatible after lifecycle migration (1.345188ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 294.127774
+ℹ start of coverage report
+ℹ ------------------------------------------------------------------------------
+ℹ file            | line % | branch % | funcs % | uncovered lines
+ℹ ------------------------------------------------------------------------------
+ℹ src             |        |          |         | 
+ℹ  domain         |        |          |         | 
+ℹ   errors.ts     | 100.00 |   100.00 |  100.00 | 
+ℹ   link.ts       |  96.39 |    95.52 |   90.91 | 29-30 50-51 79-80
+ℹ  lab            |        |          |         | 
+ℹ   scenarios.ts  |  99.38 |    90.91 |  100.00 | 90
+ℹ  server         |        |          |         | 
+ℹ   analytics.ts  | 100.00 |   100.00 |  100.00 | 
+ℹ   error-page.ts | 100.00 |    33.33 |  100.00 | 
+ℹ   http.ts       |  90.95 |    79.27 |   75.00 | 55 58 101-102 104-106 143-157
+ℹ   redirect.ts   | 100.00 |   100.00 |  100.00 | 
+ℹ   repository.ts | 100.00 |   100.00 |  100.00 | 
+ℹ   security.ts   | 100.00 |    96.00 |  100.00 | 
+ℹ   service.ts    | 100.00 |    97.37 |  100.00 | 
+ℹ tests           |        |          |         | 
+ℹ  sqlite.ts      | 100.00 |   100.00 |  100.00 | 
+ℹ ------------------------------------------------------------------------------
+ℹ all files       |  97.24 |    90.67 |   96.00 | 
+ℹ ------------------------------------------------------------------------------
+ℹ end of coverage report

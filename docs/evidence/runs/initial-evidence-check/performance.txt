@@ -1,0 +1,26 @@
+$ npm run benchmark
+Started: 2026-11-10T06:53:23.137Z
+
+> linklab@1.0.0 benchmark
+> node --experimental-transform-types scripts/benchmark.ts
+
+{
+  "scope": "Local in-memory SQLite service resolution only; excludes HTTP, gateway, network and hosted D1. Not a production capacity claim.",
+  "samples": 10000,
+  "totalMs": 134.2,
+  "p50Ms": 0.008943999999985408,
+  "p95Ms": 0.013769999999993843,
+  "thresholds": {
+    "maxP95Ms": 10,
+    "maxTotalMs": 20000
+  },
+  "passed": true,
+  "p99Ms": 0.03631499999997345,
+  "node": "v24.22.1"
+}
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+(node:251) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Exit: 0; signal: none

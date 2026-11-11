@@ -1,0 +1,10 @@
+$ npm run typecheck
+Started: 2026-11-10T06:55:42.001Z
+
+> linklab@1.0.0 typecheck
+> tsc --noEmit
+
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+Exit: 0; signal: none

@@ -1,0 +1,28 @@
+$ npm audit --json --audit-level=high --fetch-retries=0 --fetch-timeout=20000
+Started: 2026-11-10T06:53:18.077Z
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 23,
+      "dev": 553,
+      "optional": 121,
+      "peer": 47,
+      "peerOptional": 0,
+      "total": 610
+    }
+  }
+}
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+Exit: 0; signal: none

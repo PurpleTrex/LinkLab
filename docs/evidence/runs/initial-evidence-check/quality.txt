@@ -1,0 +1,79 @@
+$ npm run check
+Started: 2026-11-10T06:53:10.043Z
+
+> linklab@1.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm test
+
+
+> linklab@1.0.0 typecheck
+> tsc --noEmit
+
+
+> linklab@1.0.0 lint
+> eslint . --ignore-pattern dist --ignore-pattern .next --max-warnings=0
+
+
+> linklab@1.0.0 format:check
+> prettier --check app components src tests db/schema.ts docs README.md worker/index.ts scripts/migrate-local.mjs scripts/benchmark.ts scripts/verify-submission.mjs .github .prettierrc.json vite.config.ts eslint.config.mjs
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> linklab@1.0.0 test
+> node --experimental-transform-types --test tests/*.test.ts
+
+(node:134) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ greenfield: create, resolve, replay and protect owner boundaries (23.294716ms)
+✔ input rejects executable schemes, credentials, IPs, local hosts, loops and unknown fields (1.447152ms)
+(node:135) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ HTTP lifecycle creates, redirects, counts GET, ignores HEAD, revokes and returns 410 (29.331418ms)
+✔ management endpoints reject missing identity, cross-origin writes and non-owner access (6.562756ms)
+✔ HTTP rejects unsupported methods, malformed JSON, oversized body, unknown fields and invalid keys (5.181753ms)
+✔ safe problem responses and logs do not leak destination query strings or stack traces (3.275729ms)
+✔ database failures fail closed with a generic 503 (1.449075ms)
+✔ liveness remains available without database while readiness fails (0.747637ms)
+✔ head errors contain no body (1.33299ms)
+✔ idempotency response headers distinguish creation, replay and changed payload (5.313142ms)
+✔ analytics failure cannot replace redirect response; HEAD never calls sink (2.755926ms)
+✔ body size is bounded even without Content-Length (1.998203ms)
+✔ SQL-like input stays data and cannot alter schema (2.817127ms)
+✔ browser navigation receives a safe, human-readable unavailable page (1.172217ms)
+(node:136) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ twenty concurrent custom-alias requests produce one link and one audit event (18.224281ms)
+✔ twenty concurrent idempotent retries return one resource (3.699268ms)
+✔ generated aliases retry a collision and stop after five failures (3.80635ms)
+✔ audit failure rolls back link creation atomically (1.876369ms)
+✔ expiry boundary, revocation, ownership and stale version are enforced (2.879121ms)
+✔ audit failure rolls back revocation (1.925313ms)
+✔ cursor pagination does not lose links with equal creation timestamps (3.210261ms)
+✔ analytics uses exactly seven UTC dates and preserves owner boundaries (4.166312ms)
+✔ atomic rate counter rejects excess requests and resets at minute boundary (1.630298ms)
+✔ brownfield migration preserves existing rows and gives safe lifecycle defaults (1.184616ms)
+✔ expiry representation rejects invalid and excessively distant values (1.14732ms)
+✔ random alias generator produces valid full-length values (9.956072ms)
+✔ reliability lab: collision passes and cleans its fixtures (4.414557ms)
+✔ reliability lab: idempotency passes and cleans its fixtures (1.749829ms)
+✔ reliability lab: expiration passes and cleans its fixtures (2.453871ms)
+✔ reliability lab: analytics passes and cleans its fixtures (3.564745ms)
+✔ reliability lab: destination passes and cleans its fixtures (1.357007ms)
+✔ idempotent replay still succeeds after the link expires (2.199647ms)
+✔ v1 request fingerprints remain compatible after lifecycle migration (1.195012ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 267.641703
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+Exit: 0; signal: none

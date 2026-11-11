@@ -1,0 +1,41 @@
+$ npm run benchmark -- --max-p95-ms=0.00000001
+Started: 2026-11-10T06:53:23.526Z
+
+> linklab@1.0.0 benchmark
+> node --experimental-transform-types scripts/benchmark.ts --max-p95-ms=0.00000001
+
+{
+  "scope": "Local in-memory SQLite service resolution only; excludes HTTP, gateway, network and hosted D1. Not a production capacity claim.",
+  "samples": 10000,
+  "totalMs": 129.8,
+  "p50Ms": 0.008772999999990816,
+  "p95Ms": 0.013941000000002646,
+  "thresholds": {
+    "maxP95Ms": 1e-8,
+    "maxTotalMs": 20000
+  },
+  "passed": false,
+  "p99Ms": 0.035453000000003954,
+  "node": "v24.22.1"
+}
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+(node:276) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Local performance gate failed: p95=0.013941000000002646 ms; total=129.79738199999997 ms
+    at <anonymous> (/workspace/sites/linklab/.sites-checkout/scripts/benchmark.ts:60:3) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+
+Exit: 1; signal: none

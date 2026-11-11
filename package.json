@@ -1,0 +1,61 @@
+{
+  "name": "linklab",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "install:ci": "node scripts/install-ci.mjs",
+    "dev": "node scripts/run-framework.mjs dev",
+    "build": "node scripts/run-framework.mjs build",
+    "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --max-warnings=0",
+    "db:generate": "drizzle-kit generate",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-transform-types --test tests/*.test.ts",
+    "test:coverage": "node --experimental-transform-types --experimental-test-coverage --test tests/*.test.ts",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "format": "prettier --write app components src tests db/schema.ts docs README.md worker/index.ts scripts/migrate-local.mjs scripts/benchmark.ts scripts/verify-submission.mjs .github .prettierrc.json vite.config.ts eslint.config.mjs",
+    "format:check": "prettier --check app components src tests db/schema.ts docs README.md worker/index.ts scripts/migrate-local.mjs scripts/benchmark.ts scripts/verify-submission.mjs .github .prettierrc.json vite.config.ts eslint.config.mjs",
+    "db:migrate:local": "node scripts/migrate-local.mjs",
+    "security:audit": "npm audit --audit-level=high --fetch-retries=0 --fetch-timeout=20000",
+    "benchmark": "node --experimental-transform-types scripts/benchmark.ts",
+    "verify:submission": "node scripts/verify-submission.mjs",
+    "evidence:check": "node scripts/verify-submission.mjs --check-evidence"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "lucide-react": "1.31.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.68.0",
+    "@cloudflare/workers-types": "5.20261109.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.39",
+    "drizzle-kit": "0.31.11",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.4.6",
+    "prettier": "3.6.2",
+    "react-server-dom-webpack": "19.3.1",
+    "typescript": "5.9.3",
+    "vinext": "1.4.4",
+    "vite": "8.3.7",
+    "wrangler": "4.159.0"
+  },
+  "type": "module",
+  "overrides": {
+    "sharp": "0.35.5",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.5"
+    },
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3"
+  }
+}

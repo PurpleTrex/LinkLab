@@ -1,0 +1,883 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LinkLab",
+    "version": "1.0.0",
+    "description": "Private authenticated URL service. Identity is injected by the trusted Sites gateway; direct internet header authentication is unsupported. Creation is idempotent; analytics are best effort. All mutations require exact same-origin Origin. Limits per identity/fixed minute: management 120, create 30, lab 5. Request body maximum 8192 bytes."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "security": [
+    {
+      "gatewayIdentity": []
+    }
+  ],
+  "paths": {
+    "/api/v1/links": {
+      "get": {
+        "operationId": "listLinks",
+        "summary": "List owned links",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["links", "nextCursor"],
+                  "properties": {
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Link"
+                      }
+                    },
+                    "nextCursor": {
+                      "type": ["string", "null"]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            },
+            "description": ""
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": ""
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createLink",
+        "summary": "Create a link or replay an identical creation",
+        "responses": {
+          "200": {
+            "description": "Idempotent replay; Idempotency-Replayed: true",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["link", "replayed"],
+                  "properties": {
+                    "link": {
+                      "$ref": "#/components/schemas/Link"
+                    },
+                    "replayed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["link", "replayed"],
+                  "properties": {
+                    "link": {
+                      "$ref": "#/components/schemas/Link"
+                    },
+                    "replayed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Relative resource API URL"
+              },
+              "Idempotency-Replayed": {
+                "schema": {
+                  "type": "string",
+                  "enum": ["false"]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Must equal the request origin. Required for all mutations."
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{16,128}$"
+            },
+            "description": "Owner-scoped; retained for the lifetime of the record. Changed payload returns 409."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLink"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/links/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": ""
+        }
+      ],
+      "get": {
+        "operationId": "getLink",
+        "summary": "Read an owned link",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["link"],
+                  "properties": {
+                    "link": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Quoted resource version"
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "revokeLink",
+        "summary": "Permanently revoke an owned link",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["link"],
+                  "properties": {
+                    "link": {
+                      "$ref": "#/components/schemas/Link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Must equal the request origin. Required for all mutations."
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\"[1-9][0-9]{0,8}\"$"
+            },
+            "description": "Quoted resource version, e.g. \"1\". Missing/invalid: 428; stale active version: 409. Repeated revocation is idempotent."
+          }
+        ]
+      }
+    },
+    "/api/v1/links/{id}/analytics": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": ""
+        }
+      ],
+      "get": {
+        "operationId": "linkAnalytics",
+        "summary": "Seven UTC calendar dates of recorded GET redirects",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "series": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DailyCount"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/overview": {
+      "get": {
+        "operationId": "overview",
+        "summary": "Owned link totals, seven-day rankings and latest audit events",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Overview"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session": {
+      "get": {
+        "operationId": "session",
+        "summary": "Check authenticated session",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "authenticated": {
+                      "const": true
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "apiVersion": {
+                      "const": "v1"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ready": {
+      "get": {
+        "operationId": "readiness",
+        "summary": "Authenticated database/schema readiness",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "ready"
+                    },
+                    "database": {
+                      "const": "connected"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/lab": {
+      "post": {
+        "operationId": "runLab",
+        "summary": "Execute one predefined isolated reliability check",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LabResult"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Must equal the request origin. Required for all mutations."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["scenario"],
+                "properties": {
+                  "scenario": {
+                    "enum": ["collision", "idempotency", "expiration", "analytics", "destination"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/s/{alias}": {
+      "parameters": [
+        {
+          "name": "alias",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,46}[a-z0-9]$"
+          },
+          "description": ""
+        }
+      ],
+      "get": {
+        "description": "Resolve an active short link. The private deployment also applies a platform access gate. HEAD does not record analytics.",
+        "security": [],
+        "responses": {
+          "302": {
+            "description": "Temporary redirect. No-store; no-referrer.",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown link"
+          },
+          "410": {
+            "description": "Expired or revoked"
+          },
+          "503": {
+            "description": "Dependency unavailable"
+          }
+        },
+        "operationId": "resolveLink"
+      },
+      "head": {
+        "description": "Resolve an active short link. The private deployment also applies a platform access gate. HEAD does not record analytics.",
+        "security": [],
+        "responses": {
+          "302": {
+            "description": "Temporary redirect. No-store; no-referrer.",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown link"
+          },
+          "410": {
+            "description": "Expired or revoked"
+          },
+          "503": {
+            "description": "Dependency unavailable"
+          }
+        },
+        "operationId": "headLink"
+      }
+    },
+    "/healthz": {
+      "get": {
+        "operationId": "liveness",
+        "summary": "Worker liveness; does not check dependencies",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "head": {
+        "operationId": "headLiveness",
+        "summary": "Worker liveness without response body",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured failure",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "gatewayIdentity": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "oai-authenticated-user-id",
+        "description": "Server-to-server gateway identity only. The hosting gateway must authenticate visitors, remove untrusted copies, and inject this header. Browser clients use gateway-managed sign-in; this is not a user-supplied API credential."
+      }
+    },
+    "schemas": {
+      "Link": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "alias",
+          "title",
+          "targetUrl",
+          "createdAt",
+          "expiresAt",
+          "revokedAt",
+          "version",
+          "shortUrl"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "alias": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 48
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "targetUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "shortUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "createdAt": {
+            "type": "integer"
+          },
+          "expiresAt": {
+            "type": ["integer", "null"]
+          },
+          "revokedAt": {
+            "type": ["integer", "null"]
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "CreateLink": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["targetUrl"],
+        "properties": {
+          "targetUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048,
+            "description": "HTTPS public hostname, no credentials, custom ports, IP literals, local suffixes or service-origin targets. Not a reputation guarantee."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "alias": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,46}[a-z0-9]$"
+          },
+          "expiresAt": {
+            "type": ["integer", "null"],
+            "description": "Unix milliseconds. Future and at most one year away for a new resource. Null or absent means no expiry."
+          }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "required": ["type", "title", "status", "detail", "requestId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "DailyCount": {
+        "type": "object",
+        "required": ["day", "count"],
+        "properties": {
+          "day": {
+            "type": "string",
+            "format": "date"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "LabResult": {
+        "type": "object",
+        "required": [
+          "scenario",
+          "passed",
+          "durationMs",
+          "expected",
+          "observed",
+          "assertions",
+          "isolation"
+        ],
+        "properties": {
+          "scenario": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "durationMs": {
+            "type": "integer"
+          },
+          "expected": {
+            "type": "string"
+          },
+          "observed": {
+            "type": "string"
+          },
+          "assertions": {
+            "type": "integer"
+          },
+          "isolation": {
+            "type": "string"
+          }
+        }
+      },
+      "Overview": {
+        "type": "object",
+        "properties": {
+          "totals": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "active": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "expired": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "revoked": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyCount"
+            }
+          },
+          "redirects": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "popular": {
+            "type": "array",
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "alias": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "audit": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "linkId": {
+                  "type": "string"
+                },
+                "action": {
+                  "enum": ["link.created", "link.revoked"]
+                },
+                "occurredAt": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "window": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "format": "date"
+              },
+              "end": {
+                "type": "string",
+                "format": "date"
+              },
+              "timezone": {
+                "const": "UTC"
+              },
+              "definition": {
+                "type": "string"
+              }
+            }
+          },
+          "semantics": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

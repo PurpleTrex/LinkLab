@@ -1,0 +1,13 @@
+
+> linklab@1.0.0 benchmark
+> node --experimental-transform-types scripts/benchmark.ts
+
+{
+  "scope": "Local in-memory SQLite service resolution only; excludes HTTP, gateway, network and hosted D1. Not a production capacity claim.",
+  "samples": 10000,
+  "totalMs": 127.28,
+  "p50Ms": 0.008442999999999756,
+  "p95Ms": 0.01231799999999339,
+  "p99Ms": 0.03668499999997721,
+  "node": "v24.22.1"
+}

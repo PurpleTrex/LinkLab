@@ -1,0 +1,12 @@
+$ npm run format:check
+Started: 2026-11-10T06:55:46.635Z
+
+> linklab@1.0.0 format:check
+> prettier --check app components src tests db/schema.ts docs README.md worker/index.ts scripts/migrate-local.mjs scripts/benchmark.ts scripts/verify-submission.mjs .github .prettierrc.json vite.config.ts eslint.config.mjs
+
+Checking formatting...
+All matched files use Prettier code style!
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+Exit: 0; signal: none

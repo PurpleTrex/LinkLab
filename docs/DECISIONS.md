@@ -1,0 +1,17 @@
+# Engineering decision register
+
+These are implemented defaults prepared for review. “Selected by assistant” records implementation disposition, not human approval. The candidate records acceptance or changes in REVIEW-SIGNOFF.md.
+
+| ID  | Question / options                                | Selected behavior and rationale                                                                                                                          | Impact / evidence                                                  | Human acceptance |
+| --- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------- |
+| D01 | One relational service or distributed components? | Selected a modular monolith and D1; keeps alias/key uniqueness and audit transactions inspectable                                                        | Repository/service, ARCHITECTURE.md; scalability needs measurement | Pending          |
+| D02 | How are concurrent claims and retries handled?    | Selected database constraints plus bounded retries; rejected lookup-before-insert as sole defense                                                        | Collision and idempotency tests; atomic rollback tests             | Pending          |
+| D03 | What happens to expired/revoked aliases?          | Selected 410, no-store redirects and permanent alias reservation; rejected permanent redirect caching                                                    | Lifecycle API, migration 0001, HTTP lifecycle tests                | Pending          |
+| D04 | What does popularity measure?                     | Selected successful recorded GET redirects, seven UTC dates, repeats/bots included, HEAD excluded; rejected unique-person claims                         | Analytics window/ownership tests; best-effort loss documented      | Pending          |
+| D05 | How should identity and audience work?            | Selected the trusted platform gateway and owner-private deployment; rejected a second password store                                                     | HTTP ownership/Origin tests; deployment trust boundary             | Pending          |
+| D06 | Should the server fetch destinations?             | Selected no fetching; rejected automatic metadata crawling to avoid added SSRF/privacy exposure                                                          | Input policy and route/service source                              | Pending          |
+| D07 | When is production readiness established?         | Selected private release candidate status plus explicit verification boundaries; rejected presenting local throughput or passing tests as full assurance | RELEASE.md; runbook; pending review                                | Pending          |
+
+## Consequential-change review packet
+
+For migration approval, inspect the original migration and its additive successor with the baseline-to-release diff in CHANGE-PROVENANCE.md. For audience or gateway approval, review SECURITY.md and OPERATIONS.md. For retention approval, inspect `scripts/maintenance.sql` and choose a policy; it is not scheduled automatically. For analytics acceptance, review scenario 3 and the loss semantics. The checklist records these decisions without fabricating approvals.
