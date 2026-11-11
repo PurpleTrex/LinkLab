@@ -5,16 +5,6 @@ An original URL service with a private dashboard, isolated reliability checks, a
 
 **Release posture:** production-oriented implementation and private hosted release candidate. Automated verification is evidence, not a claim of independent certification, load capacity, or human approval. See [release readiness](docs/RELEASE.md) for the verified results and remaining operational work.
 
-## Assignment review
-
-Start with [the submission guide](docs/SUBMISSION.md), [engineering summary](docs/ENGINEERING-SUMMARY.md), and [demo procedure](docs/DEMO.md). Human review/sign-off is pending. The actual single-session history is disclosed; no multi-day candidate activity is fabricated.
-
-Hosted prototype: https://linklab-engineering-lab.purplepixel686.chatgpt.site (private access).
-
-## Run locally
-
-If using the downloadable ZIP, extract it and restore a Git checkout before running verification:
-
 ```sh
 git clone source-history.bundle linklab-review
 cd linklab-review
