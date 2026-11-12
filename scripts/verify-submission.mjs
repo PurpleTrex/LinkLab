@@ -9,6 +9,7 @@ process.chdir(root);
 const output = 'docs/evidence/runs/latest';
 const baseline = '38f7f37cbb3fd11316b86ee5bcc14be3b297f4c9';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const cleanLog = (value) => value.replace(/[\t ]+$/gmu, '');
 function git(args) {
   const result = spawnSync('git', args, {
     encoding: 'utf8',
@@ -17,6 +18,33 @@ function git(args) {
   });
   if (result.error || result.status !== 0) throw new Error(`Git command failed: ${args[0]}`);
   return result.stdout;
+}
+function verifySourceHistory() {
+  const localBaseline = spawnSync('git', ['cat-file', '-e', `${baseline}^{commit}`], {
+    encoding: 'utf8',
+    timeout: 15000,
+  });
+  if (!localBaseline.error && localBaseline.status === 0) {
+    const ancestor = spawnSync('git', ['merge-base', '--is-ancestor', baseline, 'HEAD'], {
+      encoding: 'utf8',
+      timeout: 15000,
+    });
+    if (!ancestor.error && ancestor.status === 0)
+      return 'baseline is an ancestor of the current checkout';
+  }
+
+  const sourceCommit = readFileSync('SOURCE-COMMIT.txt', 'utf8').trim();
+  const bundleHeads = git(['bundle', 'list-heads', 'source-history.bundle']).split(/\r?\n/u);
+  if (!bundleHeads.some((entry) => entry.startsWith(`${sourceCommit} `))) {
+    throw new Error(
+      'The source history bundle does not contain SOURCE-COMMIT.txt as a branch head.',
+    );
+  }
+  const bundleStatus = git(['bundle', 'verify', 'source-history.bundle']);
+  if (!/complete history/iu.test(bundleStatus)) {
+    throw new Error('The source history bundle is not self-contained.');
+  }
+  return 'complete source-history.bundle matches SOURCE-COMMIT.txt; current Git checkout is independent';
 }
 function inputs() {
   const paths = [
@@ -62,8 +90,7 @@ if (process.argv.includes('--check-evidence')) {
   const npmCli = process.env.npm_execpath;
   if (!npmCli || !existsSync(npmCli))
     throw new Error('Run this tool with npm run verify:submission.');
-  git(['cat-file', '-e', `${baseline}^{commit}`]);
-  git(['merge-base', '--is-ancestor', baseline, 'HEAD']);
+  const historyValidation = verifySourceHistory();
   mkdirSync(output, { recursive: true });
   const captured = inputs();
   const manifest = {
@@ -75,6 +102,7 @@ if (process.argv.includes('--check-evidence')) {
     platform: `${process.platform}/${process.arch}`,
     baseCommit: git(['rev-parse', 'HEAD']).trim(),
     baselineCommit: baseline,
+    historyValidation,
     pendingChanges: Boolean(git(['status', '--porcelain']).trim()),
     inputFingerprint: fingerprint(captured),
     inputs: captured,
@@ -121,8 +149,8 @@ if (process.argv.includes('--check-evidence')) {
     const content = [
       `$ npm ${args.join(' ')}`,
       `Started: ${startedAt}`,
-      result.stdout ?? '',
-      result.stderr ?? '',
+      cleanLog(result.stdout ?? ''),
+      cleanLog(result.stderr ?? ''),
       result.error ? `Execution error: ${result.error.code ?? result.error.name}` : '',
       `Exit: ${result.status ?? 'none'}; signal: ${result.signal ?? 'none'}`,
     ]

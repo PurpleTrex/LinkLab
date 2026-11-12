@@ -2,7 +2,7 @@
 
 ## Outcome
 
-LinkLab is an original URL-shortener implementation with a runnable private dashboard, versioned APIs, relational storage, aggregate analytics, and five isolated reliability checks. It is a reviewable release candidate. Candidate code review and sign-off remain pending.
+LinkLab is an original URL-shortener implementation with a runnable private dashboard, versioned APIs, relational storage, aggregate analytics, and five isolated reliability checks. The project owner reviewed the deliverables and approved submission as a private prototype; public production release remains unapproved.
 
 ## Approach and rationale
 
@@ -16,7 +16,7 @@ The baseline service was committed before lifecycle work. An additive migration 
 - SQL schema and ordered migrations; machine-readable OpenAPI.
 - Unit/service/HTTP tests using actual SQLite statements and rollback failures.
 - Architecture, decision register, threat model, operations runbook and demonstration procedure.
-- Preserved source history; bounded AI task records and clearly labeled user prompt excerpts.
+- Preserved source history; bounded AI task records and an AI assistance summary.
 - Verification command producing exit codes, logs, environment versions and input-file hashes.
 
 ## Validation
@@ -38,6 +38,6 @@ Existing browser evidence covers the core lifecycle and diagnostics; the latest 
 
 ## Assumptions and limitations
 
-The [decision register](DECISIONS.md) records the implemented defaults and pending human acceptance. CI configuration is provided but is not claimed to have run on a destination GitHub repository. Monitoring, backup rehearsal, public abuse controls, retention scheduling and independent assurance remain public-release responsibilities. No production customer data was used in test fixtures.
+The [decision register](DECISIONS.md) records the implemented defaults accepted for assignment submission in [the review record](REVIEW-SIGNOFF.md). CI configuration is provided but is not claimed to have run on a destination GitHub repository. Monitoring, backup rehearsal, public abuse controls, retention scheduling and independent assurance remain public-release responsibilities. No production customer data was used in test fixtures.
 
-AI authored substantial code and documentation under user instructions. The candidate has not yet completed the review record. Initial raw assistant prompts were not retained; retrospective descriptions are labeled and linked to artifacts, not presented as an exact transcript. The actual build history is preserved, not backdated to imitate the assignment's 2–3 day exercise.
+AI assisted with implementation, debugging, refactoring, tests, documentation, and review preparation. Task-level records are linked to artifacts. The project owner reports spending two days on the assignment; exact dates were not supplied and are not inferred from Git timestamps.

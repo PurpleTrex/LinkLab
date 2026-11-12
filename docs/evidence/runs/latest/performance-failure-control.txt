@@ -1,5 +1,5 @@
 $ npm run benchmark -- --max-p95-ms=0.00000001
-Started: 2026-11-10T06:55:53.110Z
+Started: 2026-11-12T17:07:52.339Z
 
 > linklab@1.0.0 benchmark
 > node --experimental-transform-types scripts/benchmark.ts --max-p95-ms=0.00000001
@@ -7,27 +7,27 @@ Started: 2026-11-10T06:55:53.110Z
 {
   "scope": "Local in-memory SQLite service resolution only; excludes HTTP, gateway, network and hosted D1. Not a production capacity claim.",
   "samples": 10000,
-  "totalMs": 135.35,
-  "p50Ms": 0.008883999999994785,
-  "p95Ms": 0.013681000000019594,
+  "totalMs": 149.79,
+  "p50Ms": 0.008399999999994634,
+  "p95Ms": 0.03630000000001132,
   "thresholds": {
     "maxP95Ms": 1e-8,
     "maxTotalMs": 20000
   },
   "passed": false,
-  "p99Ms": 0.04221300000000383,
-  "node": "v24.22.1"
+  "p99Ms": 0.05740000000000123,
+  "node": "v24.14.0"
 }
 
-npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
-(node:277) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:6824) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
+(node:6824) ExperimentalWarning: SQLite is an experimental feature and might change at any time
 node:internal/modules/run_main:107
     triggerUncaughtException(
     ^
 
-AssertionError [ERR_ASSERTION]: Local performance gate failed: p95=0.013681000000019594 ms; total=135.353656 ms
-    at <anonymous> (/workspace/sites/linklab/.sites-checkout/scripts/benchmark.ts:60:3) {
+AssertionError [ERR_ASSERTION]: Local performance gate failed: p95=0.03630000000001132 ms; total=149.78659999999996 ms
+    at <anonymous> (C:\Users\meinr\OneDrive\Desktop\LinkLab\scripts\benchmark.ts:60:3) {
   generatedMessage: false,
   code: 'ERR_ASSERTION',
   actual: false,
@@ -36,6 +36,6 @@ AssertionError [ERR_ASSERTION]: Local performance gate failed: p95=0.01368100000
   diff: 'simple'
 }
 
-Node.js v24.22.1
+Node.js v24.14.0
 
 Exit: 1; signal: none

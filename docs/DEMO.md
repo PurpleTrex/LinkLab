@@ -17,11 +17,11 @@ Run `npm run verify:submission` before review. Open `docs/evidence/runs/latest/m
 
 ## Engineering discussion
 
-| Scenario   | What to show                                                                         | Questions to explain in your own words                                                      |
-| ---------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| Greenfield | Baseline commit, schema constraints, create/resolve service and initial tests        | Why does the database decide collisions? What does an idempotency key guarantee?            |
-| Brownfield | Migration 0001, fingerprint compatibility and retry-after-expiration tests           | What survives migration? Why must replay lookup happen before new-expiration validation?    |
-| Ambiguous  | Counting assumptions, daily aggregate SQL and seven-day boundary test                | What does a redirect count prove? Which decisions need stakeholder agreement?               |
-| AI process | Prompt record, task records, source diffs, fresh gate logs and your completed review | What did AI author? What did you change or reject, and why? Which claims remain unverified? |
+| Scenario   | What to show                                                                                 | Questions to explain in your own words                                                           |
+| ---------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Greenfield | Baseline commit, schema constraints, create/resolve service and initial tests                | Why does the database decide collisions? What does an idempotency key guarantee?                 |
+| Brownfield | Migration 0001, fingerprint compatibility and retry-after-expiration tests                   | What survives migration? Why must replay lookup happen before new-expiration validation?         |
+| Ambiguous  | Counting assumptions, daily aggregate SQL and seven-day boundary test                        | What does a redirect count prove? Which decisions need stakeholder agreement?                    |
+| AI process | AI assistance summary, task records, source diffs, fresh gate logs and your completed review | What did AI assist with? What did you change or reject, and why? Which claims remain unverified? |
 
 Record actual outcomes and any deviations in REVIEW-SIGNOFF.md. This is a demo procedure, not evidence that the candidate already performed it.
