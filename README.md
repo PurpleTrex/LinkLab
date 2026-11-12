@@ -1,10 +1,8 @@
 # LinkLab
-<<<<<<< HEAD
 
 An original URL service with a private dashboard, isolated reliability checks, and an inspectable engineering record. Built for the AI-proficient software engineering assignment.
 
 **Release posture:** production-oriented implementation and private hosted release candidate. Automated verification is evidence, not a claim of independent certification, load capacity, or human approval. See [release readiness](docs/RELEASE.md) for the verified results and remaining operational work.
-
 ```sh
 git clone source-history.bundle linklab-review
 cd linklab-review

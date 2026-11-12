@@ -35,4 +35,4 @@ The current supported toolchain emits upstream source-map and chunking notices d
 
 ## Submission evidence completion
 
-The submission guide, execution plan, engineering summary, decision register, prompt/task records and demo procedure are now part of the review packet. `npm run verify:submission` records the complete gate set under `docs/evidence/runs/latest/`. `npm run evidence:check` verifies the saved input hashes. See the generated report for current results rather than extrapolating historical measurements. Candidate review, actual approval and timeline attestation remain pending.
+The submission guide, execution plan, engineering summary, decision register, AI/task records and demo procedure are part of the review packet. `npm run verify:submission` records the complete gate set under `docs/evidence/runs/latest/`. `npm run evidence:check` verifies the saved input hashes. See the generated report for current results rather than extrapolating historical measurements. The project owner approved the assignment submission and reports spending two days on it; public production release remains unapproved.

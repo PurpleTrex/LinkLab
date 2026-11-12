@@ -16,4 +16,4 @@ Decomposition: define semantics → choose `(linkId, day)` aggregate schema → 
 
 The UI and API expose these semantics rather than hiding them behind a misleading “unique clicks” label. There is no tracking cookie, visitor IP, referrer, or user-agent field. The runbook supplies aggregate retention maintenance; its scheduling remains an operational task.
 
-Task mapping: T05; human decision D04 remains pending. Validation: `analytics uses exactly seven UTC dates and preserves owner boundaries` in `tests/service.test.ts`; GET/HEAD counting and failed analytics sink tests in `tests/http.test.ts`. `npm run verify:submission` captures their execution. This validates the selected semantics, not stakeholder agreement with them.
+Task mapping: T05; the project owner accepted D04 for this assignment prototype. Validation: `analytics uses exactly seven UTC dates and preserves owner boundaries` in `tests/service.test.ts`; GET/HEAD counting and failed analytics sink tests in `tests/http.test.ts`. `npm run verify:submission` captures their execution. This validates the selected semantics, not broader stakeholder agreement.

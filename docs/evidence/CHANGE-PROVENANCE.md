@@ -33,7 +33,3 @@ git log --oneline --all
 ```
 
 Compare `git rev-parse HEAD` to SOURCE-COMMIT.txt. The verifier manifest records its pre-commit base plus per-file hashes; generated verification reports are excluded from their own hash set. `npm run evidence:check` compares that hash set against the current checkout. Hashes bind evidence to bytes, not to human approval.
-
-## Evidence gaps that cannot be repaired retroactively
-
-The original assistant prompt transcript and intermediate faulty patches were not retained as a complete sequence. The repository preserves the baseline and completed changes, plus factual summaries and regression tests. Human review decisions and an actual 2–3 day candidate work history cannot be manufactured by adding files or Git commits now.

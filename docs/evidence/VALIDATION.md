@@ -2,6 +2,19 @@
 
 Build session: November 9, 2026 (America/Chicago). Execution host may label raw artifacts November 10 UTC.
 
+## Fresh local verification — November 11, 2026
+
+`npm run verify:submission` completed successfully on Windows (`win32/x64`) with Node v24.14.0. Its eight gates passed: typecheck, lint, format, coverage tests, dependency audit, performance, the intentional performance-failure control, and production build. The run is recorded in [the latest manifest](runs/latest/manifest.json) with per-gate logs and input hashes.
+
+- Tests: 33 passed, 0 failed. Coverage: 96.29% line, 90.67% branch, 96.00% function across the instrumented server/domain/lab modules and SQLite test adapter.
+- Dependency audit: 0 advisories reported by npm's registry at run time.
+- Local benchmark: 10,000 in-memory SQLite service resolutions; p95 0.037 ms and total 144.72 ms, within the configured regression thresholds. These are local measurements, not hosted latency or capacity claims.
+- Production build: passed. Framework and bundler sourcemap/chunking notices remain in the build log.
+- Local D1: both migrations applied successfully through `npm run db:migrate:local`.
+- Local startup smoke check: `npm run dev` served `http://localhost:5173/`; `GET /healthz` returned `{"status":"ok"}`.
+
+This run did not repeat the prior browser walkthrough or test a remote D1 deployment. The local server is suitable for manual UI testing with the synthetic sign-in shown in its startup output.
+
 | Check                   | Observed result                                  | Scope                                                                                               |
 | ----------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | `npm run typecheck`     | Pass                                             | Authored app/server/test code and included tool declarations                                        |
@@ -34,7 +47,7 @@ The benchmark is a local implementation check only. Raw text output is included.
 - Failed audit inserts roll back both creation and revocation.
 - A failed metrics sink preserves the redirect and emits a failure signal.
 
-The source package includes a Git history bundle containing the tested greenfield service baseline and subsequent implementation. The history reflects this build session; it is not a fabricated multi-day development record.
+The source package includes a Git history bundle containing the tested greenfield service baseline and subsequent implementation. The project owner reports spending two days on the assignment; exact dates are not inferred from the bundle's commit timestamps.
 
 ## Corporate interface revision — November 10, 2026
 

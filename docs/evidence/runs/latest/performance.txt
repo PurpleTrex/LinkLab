@@ -1,5 +1,5 @@
 $ npm run benchmark
-Started: 2026-11-10T06:55:52.720Z
+Started: 2026-11-12T17:07:51.683Z
 
 > linklab@1.0.0 benchmark
 > node --experimental-transform-types scripts/benchmark.ts
@@ -7,20 +7,20 @@ Started: 2026-11-10T06:55:52.720Z
 {
   "scope": "Local in-memory SQLite service resolution only; excludes HTTP, gateway, network and hosted D1. Not a production capacity claim.",
   "samples": 10000,
-  "totalMs": 128.18,
-  "p50Ms": 0.008813000000003512,
-  "p95Ms": 0.01275900000001684,
+  "totalMs": 162.97,
+  "p50Ms": 0.008300000000019736,
+  "p95Ms": 0.03899999999998727,
   "thresholds": {
     "maxP95Ms": 10,
     "maxTotalMs": 20000
   },
   "passed": true,
-  "p99Ms": 0.03247900000000925,
-  "node": "v24.22.1"
+  "p99Ms": 0.0730999999999824,
+  "node": "v24.14.0"
 }
 
-npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
-(node:252) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:14540) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
+(node:14540) ExperimentalWarning: SQLite is an experimental feature and might change at any time
 
 Exit: 0; signal: none

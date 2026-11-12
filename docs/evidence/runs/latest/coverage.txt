@@ -1,48 +1,51 @@
 $ npm run test:coverage
-Started: 2026-11-10T06:55:47.799Z
+Started: 2026-11-12T17:07:49.500Z
 
 > linklab@1.0.0 test:coverage
 > node --experimental-transform-types --experimental-test-coverage --test tests/*.test.ts
 
-(node:191) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:24284) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-✔ greenfield: create, resolve, replay and protect owner boundaries (19.353993ms)
-✔ input rejects executable schemes, credentials, IPs, local hosts, loops and unknown fields (1.039006ms)
-(node:192) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:24284) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+✔ greenfield: create, resolve, replay and protect owner boundaries (16.4295ms)
+✔ input rejects executable schemes, credentials, IPs, local hosts, loops and unknown fields (1.047ms)
+(node:18144) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-✔ HTTP lifecycle creates, redirects, counts GET, ignores HEAD, revokes and returns 410 (30.357254ms)
-✔ management endpoints reject missing identity, cross-origin writes and non-owner access (5.388054ms)
-✔ HTTP rejects unsupported methods, malformed JSON, oversized body, unknown fields and invalid keys (5.085008ms)
-✔ safe problem responses and logs do not leak destination query strings or stack traces (2.77939ms)
-✔ database failures fail closed with a generic 503 (1.399771ms)
-✔ liveness remains available without database while readiness fails (0.685634ms)
-✔ head errors contain no body (1.184256ms)
-✔ idempotency response headers distinguish creation, replay and changed payload (4.585174ms)
-✔ analytics failure cannot replace redirect response; HEAD never calls sink (2.317244ms)
-✔ body size is bounded even without Content-Length (1.878823ms)
-✔ SQL-like input stays data and cannot alter schema (2.992692ms)
-✔ browser navigation receives a safe, human-readable unavailable page (1.825933ms)
-(node:193) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:18144) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+✔ HTTP lifecycle creates, redirects, counts GET, ignores HEAD, revokes and returns 410 (38.4092ms)
+✔ management endpoints reject missing identity, cross-origin writes and non-owner access (5.9038ms)
+✔ HTTP rejects unsupported methods, malformed JSON, oversized body, unknown fields and invalid keys (4.8548ms)
+✔ safe problem responses and logs do not leak destination query strings or stack traces (3.8462ms)
+✔ database failures fail closed with a generic 503 (2.6831ms)
+✔ liveness remains available without database while readiness fails (0.4321ms)
+✔ head errors contain no body (2.3957ms)
+✔ idempotency response headers distinguish creation, replay and changed payload (5.3187ms)
+✔ analytics failure cannot replace redirect response; HEAD never calls sink (3.3477ms)
+✔ body size is bounded even without Content-Length (1.2045ms)
+✔ SQL-like input stays data and cannot alter schema (4.3366ms)
+✔ browser navigation receives a safe, human-readable unavailable page (3.4945ms)
+(node:34668) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-✔ twenty concurrent custom-alias requests produce one link and one audit event (18.73495ms)
-✔ twenty concurrent idempotent retries return one resource (2.912962ms)
-✔ generated aliases retry a collision and stop after five failures (3.015075ms)
-✔ audit failure rolls back link creation atomically (1.53194ms)
-✔ expiry boundary, revocation, ownership and stale version are enforced (2.669686ms)
-✔ audit failure rolls back revocation (2.373839ms)
-✔ cursor pagination does not lose links with equal creation timestamps (2.656957ms)
-✔ analytics uses exactly seven UTC dates and preserves owner boundaries (3.691286ms)
-✔ atomic rate counter rejects excess requests and resets at minute boundary (1.348443ms)
-✔ brownfield migration preserves existing rows and gives safe lifecycle defaults (1.006488ms)
-✔ expiry representation rejects invalid and excessively distant values (1.157676ms)
-✔ random alias generator produces valid full-length values (8.288228ms)
-✔ reliability lab: collision passes and cleans its fixtures (2.966553ms)
-✔ reliability lab: idempotency passes and cleans its fixtures (1.261992ms)
-✔ reliability lab: expiration passes and cleans its fixtures (1.353091ms)
-✔ reliability lab: analytics passes and cleans its fixtures (2.600391ms)
-✔ reliability lab: destination passes and cleans its fixtures (0.86212ms)
-✔ idempotent replay still succeeds after the link expires (1.544819ms)
-✔ v1 request fingerprints remain compatible after lifecycle migration (1.367762ms)
+(node:34668) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+✔ twenty concurrent custom-alias requests produce one link and one audit event (14.5788ms)
+✔ twenty concurrent idempotent retries return one resource (4.7562ms)
+✔ generated aliases retry a collision and stop after five failures (4.3314ms)
+✔ audit failure rolls back link creation atomically (2.8159ms)
+✔ expiry boundary, revocation, ownership and stale version are enforced (4.3826ms)
+✔ audit failure rolls back revocation (3.1205ms)
+✔ cursor pagination does not lose links with equal creation timestamps (3.0471ms)
+✔ analytics uses exactly seven UTC dates and preserves owner boundaries (4.6076ms)
+✔ atomic rate counter rejects excess requests and resets at minute boundary (2.8655ms)
+✔ brownfield migration preserves existing rows and gives safe lifecycle defaults (1.7149ms)
+✔ expiry representation rejects invalid and excessively distant values (0.8074ms)
+✔ random alias generator produces valid full-length values (5.1906ms)
+✔ reliability lab: collision passes and cleans its fixtures (5.0158ms)
+✔ reliability lab: idempotency passes and cleans its fixtures (4.4871ms)
+✔ reliability lab: expiration passes and cleans its fixtures (3.6433ms)
+✔ reliability lab: analytics passes and cleans its fixtures (18.4707ms)
+✔ reliability lab: destination passes and cleans its fixtures (2.7592ms)
+✔ idempotent replay still succeeds after the link expires (4.1748ms)
+✔ v1 request fingerprints remain compatible after lifecycle migration (5.8994ms)
 ℹ tests 33
 ℹ suites 0
 ℹ pass 33
@@ -50,32 +53,30 @@ Started: 2026-11-10T06:55:47.799Z
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 299.206428
+ℹ duration_ms 361.9861
 ℹ start of coverage report
 ℹ ------------------------------------------------------------------------------
 ℹ file            | line % | branch % | funcs % | uncovered lines
 ℹ ------------------------------------------------------------------------------
-ℹ src             |        |          |         | 
-ℹ  domain         |        |          |         | 
-ℹ   errors.ts     | 100.00 |   100.00 |  100.00 | 
+ℹ src             |        |          |         |
+ℹ  domain         |        |          |         |
+ℹ   errors.ts     | 100.00 |   100.00 |  100.00 |
 ℹ   link.ts       |  96.39 |    95.52 |   90.91 | 29-30 50-51 79-80
-ℹ  lab            |        |          |         | 
+ℹ  lab            |        |          |         |
 ℹ   scenarios.ts  |  99.38 |    90.91 |  100.00 | 90
-ℹ  server         |        |          |         | 
-ℹ   analytics.ts  | 100.00 |   100.00 |  100.00 | 
-ℹ   error-page.ts | 100.00 |    33.33 |  100.00 | 
+ℹ  server         |        |          |         |
+ℹ   analytics.ts  |  98.88 |   100.00 |  100.00 | 1
+ℹ   error-page.ts | 100.00 |    33.33 |  100.00 |
 ℹ   http.ts       |  90.95 |    79.27 |   75.00 | 55 58 101-102 104-106 143-157
-ℹ   redirect.ts   | 100.00 |   100.00 |  100.00 | 
-ℹ   repository.ts | 100.00 |   100.00 |  100.00 | 
-ℹ   security.ts   | 100.00 |    96.00 |  100.00 | 
-ℹ   service.ts    | 100.00 |    97.37 |  100.00 | 
-ℹ tests           |        |          |         | 
-ℹ  sqlite.ts      | 100.00 |   100.00 |  100.00 | 
+ℹ   redirect.ts   |  78.13 |   100.00 |  100.00 | 1 3-8
+ℹ   repository.ts |  97.70 |   100.00 |  100.00 | 1-2
+ℹ   security.ts   | 100.00 |    96.00 |  100.00 |
+ℹ   service.ts    | 100.00 |    97.37 |  100.00 |
+ℹ tests           |        |          |         |
+ℹ  sqlite.ts      | 100.00 |   100.00 |  100.00 |
 ℹ ------------------------------------------------------------------------------
-ℹ all files       |  97.24 |    90.67 |   96.00 | 
+ℹ all files       |  96.29 |    90.67 |   96.00 |
 ℹ ------------------------------------------------------------------------------
 ℹ end of coverage report
-
-npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
 
 Exit: 0; signal: none

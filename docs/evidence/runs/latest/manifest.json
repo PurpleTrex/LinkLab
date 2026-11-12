@@ -1,14 +1,15 @@
 {
   "schemaVersion": 1,
-  "startedAt": "2026-11-10T06:55:41.995Z",
-  "finishedAt": "2026-11-10T06:55:58.222Z",
+  "startedAt": "2026-11-12T17:07:40.912Z",
+  "finishedAt": "2026-11-12T17:07:58.464Z",
   "timezone": "UTC",
-  "node": "v24.22.1",
-  "platform": "linux/x64",
-  "baseCommit": "7c4fc9ad1dc03cfd352845d4693f7e3dd4448476",
+  "node": "v24.14.0",
+  "platform": "win32/x64",
+  "baseCommit": "8e18c92394c5de3d04ffa951bbba4aaba6b252e8",
   "baselineCommit": "38f7f37cbb3fd11316b86ee5bcc14be3b297f4c9",
+  "historyValidation": "complete source-history.bundle matches SOURCE-COMMIT.txt; current Git checkout is independent",
   "pendingChanges": true,
-  "inputFingerprint": "fc6bb20895a8cd598b18d4f92e0097981c66cd29573e6e12b28e8bb479ccbd34",
+  "inputFingerprint": "cc0237dd22d72618c9e0b58f44e3e48dbaf29845cdaa25002db6a5b9c20f04c3",
   "inputs": [
     {
       "path": ".env.example",
@@ -44,7 +45,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "3300d80e28978f45594296bbf9b0039a35313fd5cc0b4821832462168da7982a"
+      "sha256": "da0843266c4d4724990a4584237e86d4a4c01f2e7fbbbfdc89724232f37d69b5"
+    },
+    {
+      "path": "SOURCE-COMMIT.txt",
+      "sha256": "a0af2fe67381de6460948703ab18d45b8d343c78686818b995015fc3bf1facf3"
     },
     {
       "path": "app/globals.css",
@@ -88,11 +93,11 @@
     },
     {
       "path": "docs/DECISIONS.md",
-      "sha256": "4e29722349578ee2aa3e077e2261b996cc40b47992cd1e119f608340fbeda273"
+      "sha256": "862eb58d7ef2ed62d7a5494732b471c41df74de203af9bb54abd6a84cb1261b5"
     },
     {
       "path": "docs/DEMO.md",
-      "sha256": "734c594597775bb5b5de9916841a10bdfa23ff26f3142526b0fa34da43bca4d4"
+      "sha256": "e57d7c4e302cdd51f0159c8f45e9adb4a3cbd97c0b92b8d8d24d4c2f7a630b49"
     },
     {
       "path": "docs/DEPENDENCIES.md",
@@ -100,7 +105,7 @@
     },
     {
       "path": "docs/ENGINEERING-SUMMARY.md",
-      "sha256": "d81816060952dc0236e739f411c7cd58a4b61b42b83f6210eb2a9babb15c7778"
+      "sha256": "f657c8cfdfe2c7621da86f48b491f5383b5c3e96b841a24fd643276e858c1058"
     },
     {
       "path": "docs/OPERATIONS.md",
@@ -108,15 +113,15 @@
     },
     {
       "path": "docs/PLAN.md",
-      "sha256": "7279effe9ebc2ee4da46db4c47f921366e2f3111992fa75a309febe4da0242b5"
+      "sha256": "c66d350cfd65fe0641206d4fc6494bb52c32ed49c84f2cb65eaccd161bfc55ff"
     },
     {
       "path": "docs/RELEASE.md",
-      "sha256": "57982ab5f7dd7d81c77fde66f806ef3db7360bcac85974b951be6962ddf9176c"
+      "sha256": "5d4d20748b13bbcac16c5f2bb5e95a01867d0d941af8c1c24b568b48619d410f"
     },
     {
       "path": "docs/REVIEW-SIGNOFF.md",
-      "sha256": "dcd43a2804180b5a96e0fcbdbbc03a60356e2f954e705dbedfbbde2723ef99a4"
+      "sha256": "3e0fd1a98957bcea163472a30f13013cdacbabe36049beac98a0dc72aee449a2"
     },
     {
       "path": "docs/SECURITY.md",
@@ -124,27 +129,27 @@
     },
     {
       "path": "docs/SUBMISSION.md",
-      "sha256": "24790ee0cda53a5423cd929f895abc1a4954a81fc26ba38a39839fc39e5d1c67"
+      "sha256": "dccdd9f46859b3a38c64346ea1ee28ce321203f33356318570916f74407b0de8"
+    },
+    {
+      "path": "docs/evidence/AI-ASSISTANCE.md",
+      "sha256": "2992db7e01ea1fc681b7be08971ccbe6e4e83cc706c53899d21ef9101b062ba3"
     },
     {
       "path": "docs/evidence/AI-EXECUTION.md",
-      "sha256": "dfca3dd70288af0f466c004f491b6f9ceff2ee99b3576d225f20c35f4f42404d"
+      "sha256": "b36511b38846e383f10b9b3f8ffe5cebcc88fa470a972298455ef720f1ab6d7a"
     },
     {
       "path": "docs/evidence/CHANGE-PROVENANCE.md",
-      "sha256": "bb047052d482337b03cfc76222e130994a075d6af29394e4ccf02b91b463eb34"
-    },
-    {
-      "path": "docs/evidence/PROMPT-RECORD.md",
-      "sha256": "855c17e1eaff113445dc51a6d143c7c965e17ea46d29339f3c4312d5bc8f7f9b"
+      "sha256": "ced2104c3f29302112436d40cb96e6d62d5fcd7d515fc52d146a5bd5f2bd1cea"
     },
     {
       "path": "docs/evidence/TASK-RECORDS.md",
-      "sha256": "0b69ffd9a0ac7de1a38323998a33ede553b28b01c6079af64d1bcd0e77f577b8"
+      "sha256": "a206ee80f4c289afe3f64355d64b31095df11a0374a12920ba55187c7cc8c4d0"
     },
     {
       "path": "docs/evidence/VALIDATION.md",
-      "sha256": "83aae88fa116f1623b34556a4d81e2fb05444a3b5acc4d945c21f7a1762815c5"
+      "sha256": "7f92aa753afc639257e83cc84c9438ea8be00a3239c43e146d43e2d11f1929f5"
     },
     {
       "path": "docs/evidence/benchmark.txt",
@@ -164,7 +169,7 @@
     },
     {
       "path": "docs/scenarios/01-greenfield.md",
-      "sha256": "760dbf7f4d5e1ebf6752f69c3a83fb95af30360906f8a8043fd627f0ef0ad5c8"
+      "sha256": "0367dba81ae83344f8f97516b596694a697ec6ecdaaa1c2890a05e56c8cae8e7"
     },
     {
       "path": "docs/scenarios/02-brownfield.md",
@@ -172,7 +177,7 @@
     },
     {
       "path": "docs/scenarios/03-ambiguous.md",
-      "sha256": "cf9a4ef35f4713a860447ecbd494fd9512866f7e38f1e5dcb3089d6f8ae7f231"
+      "sha256": "c601d068614f6fcaec4519d580b368e1280315584af42295c42cfae4869dd6e5"
     },
     {
       "path": "drizzle.config.ts",
@@ -276,7 +281,7 @@
     },
     {
       "path": "scripts/verify-submission.mjs",
-      "sha256": "d4fc1c7b88c41c0c73a1f7eab9f853030412c06f22307bc2593c36a6b1f4a2b2"
+      "sha256": "48bdb458b31ba7a6af015e120ccc25fa91e3b5c77c93eef8f0c76e1b843423a2"
     },
     {
       "path": "scripts/vite/sites-vite-plugin.LICENSE",
@@ -285,6 +290,10 @@
     {
       "path": "scripts/vite/sites-vite-plugin.ts",
       "sha256": "0050ab56c0c4a09edc8611a3534f37fb99e1f2087e63c02859ea36974ec381ac"
+    },
+    {
+      "path": "source-history.bundle",
+      "sha256": "0236c4559e79cffd788f1cd6b12f02a9121e46bab857ed8701bf20c657520f65"
     },
     {
       "path": "src/client/api.ts",
@@ -376,14 +385,14 @@
         "run",
         "typecheck"
       ],
-      "startedAt": "2026-11-10T06:55:42.001Z",
-      "finishedAt": "2026-11-10T06:55:44.178Z",
+      "startedAt": "2026-11-12T17:07:40.998Z",
+      "finishedAt": "2026-11-12T17:07:43.546Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/typecheck.txt",
-      "logSha256": "4c34d59701cfb639b2d99c1ffcc04158f0f1d2f9e5fd0ab6bed98d79c36273ab"
+      "logSha256": "4186bd58a6d3044f0d444648858c434bad26906cba9354fce6a16bd4577e7882"
     },
     {
       "id": "lint",
@@ -392,14 +401,14 @@
         "run",
         "lint"
       ],
-      "startedAt": "2026-11-10T06:55:44.179Z",
-      "finishedAt": "2026-11-10T06:55:46.635Z",
+      "startedAt": "2026-11-12T17:07:43.549Z",
+      "finishedAt": "2026-11-12T17:07:48.359Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/lint.txt",
-      "logSha256": "ac754f735e46e120f23464dc98c41a687650d61f31364efe5f53f0fc18ed6b2e"
+      "logSha256": "ed70d6539d44ecef34ad8f1c6bef3f12329b24658c9121adfd1a3e298799f157"
     },
     {
       "id": "format",
@@ -408,14 +417,14 @@
         "run",
         "format:check"
       ],
-      "startedAt": "2026-11-10T06:55:46.635Z",
-      "finishedAt": "2026-11-10T06:55:47.799Z",
+      "startedAt": "2026-11-12T17:07:48.361Z",
+      "finishedAt": "2026-11-12T17:07:49.499Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/format.txt",
-      "logSha256": "43dbf5c208cc4875b43a83a26c6dd47a902cac931307e0696cfabe7e744a1104"
+      "logSha256": "58ddac8789b7aa917c60664aab2b58e8178390fbcfa99449cb9b21b862e794f1"
     },
     {
       "id": "coverage",
@@ -424,14 +433,14 @@
         "run",
         "test:coverage"
       ],
-      "startedAt": "2026-11-10T06:55:47.799Z",
-      "finishedAt": "2026-11-10T06:55:48.372Z",
+      "startedAt": "2026-11-12T17:07:49.500Z",
+      "finishedAt": "2026-11-12T17:07:50.308Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/coverage.txt",
-      "logSha256": "639e21c702bdb54ac3599699355118b7c41f329a78381bbd15c81895b646cf01"
+      "logSha256": "10d3617250b636761d08e63f5113dbf45b679bcf0238fe572d2626a9c0a0c575"
     },
     {
       "id": "dependency-audit",
@@ -443,14 +452,14 @@
         "--fetch-retries=0",
         "--fetch-timeout=20000"
       ],
-      "startedAt": "2026-11-10T06:55:48.373Z",
-      "finishedAt": "2026-11-10T06:55:52.719Z",
+      "startedAt": "2026-11-12T17:07:50.311Z",
+      "finishedAt": "2026-11-12T17:07:51.681Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/dependency-audit.txt",
-      "logSha256": "ffc367ae3c2f72c7647f55c7174a5f72fbc3cf48700c0d1410bce73791486ad1"
+      "logSha256": "fb12ddbb47cfb528b7d725ef4659fe56c9ff40934fc1e9ac8f339a1d199cc251"
     },
     {
       "id": "performance",
@@ -459,14 +468,14 @@
         "run",
         "benchmark"
       ],
-      "startedAt": "2026-11-10T06:55:52.720Z",
-      "finishedAt": "2026-11-10T06:55:53.109Z",
+      "startedAt": "2026-11-12T17:07:51.683Z",
+      "finishedAt": "2026-11-12T17:07:52.337Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/performance.txt",
-      "logSha256": "721d0d3d1dc4de6544bc168edb6c635ce9d41662c480473be37c64c1f56c4674"
+      "logSha256": "f92a0187ca960083daa8abcf300281c771ceb5dab5721ef88e231e533101f457"
     },
     {
       "id": "performance-failure-control",
@@ -477,14 +486,14 @@
         "--",
         "--max-p95-ms=0.00000001"
       ],
-      "startedAt": "2026-11-10T06:55:53.110Z",
-      "finishedAt": "2026-11-10T06:55:53.504Z",
+      "startedAt": "2026-11-12T17:07:52.339Z",
+      "finishedAt": "2026-11-12T17:07:52.933Z",
       "exitCode": 1,
       "signal": null,
       "expectedExitCode": 1,
       "passed": true,
       "log": "docs/evidence/runs/latest/performance-failure-control.txt",
-      "logSha256": "bcd6cfa089273a0914360cf53befd63e5906a96c77504de0c0e86de3fefea3ea"
+      "logSha256": "e9005f54992d61c08ed43ce371bdc280315b6eeb97a3cc93b2a6190a1c644a0d"
     },
     {
       "id": "build",
@@ -493,14 +502,14 @@
         "run",
         "build"
       ],
-      "startedAt": "2026-11-10T06:55:53.505Z",
-      "finishedAt": "2026-11-10T06:55:58.221Z",
+      "startedAt": "2026-11-12T17:07:52.936Z",
+      "finishedAt": "2026-11-12T17:07:58.462Z",
       "exitCode": 0,
       "signal": null,
       "expectedExitCode": 0,
       "passed": true,
       "log": "docs/evidence/runs/latest/build.txt",
-      "logSha256": "fcde230aeb13648dd562b2523ee419a165c61c2f7f97375e1abdd84ffbe4b776"
+      "logSha256": "8d4c9a811e21a5ba75e2ddb189b97cfe0f70a7b1572e73af4bc6a0214233a5b5"
     }
   ],
   "limitations": [

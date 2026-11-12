@@ -15,6 +15,6 @@ Tasks and dependencies:
 
 Evidence: baseline commit `38f7f37cbb3fd11316b86ee5bcc14be3b297f4c9` records the service, initial schema, and two passing tests before lifecycle fields were added. It is a **service baseline**, not a claim that a complete historical web product existed. Final tests extend this foundation with concurrent creates, retries, injected audit failures, input policy, HTTP routes and ownership.
 
-AI output accepted: original service/repository/domain modules. Revised during implementation: random alias helper cleanup, strict type errors, and client-side lint issues. Human review is pending.
+AI output accepted for the assignment submission: original service/repository/domain modules. Revised during implementation: random alias helper cleanup, strict type errors, and client-side lint issues. Candidate acceptance is recorded in REVIEW-SIGNOFF.md.
 
 Task mapping: T01–T02 in PLAN.md and TASK-RECORDS.md. Run `npm test` for the greenfield creation/replay/ownership assertions and `npm run verify:submission` for the full gate set. Review the exact historical files using CHANGE-PROVENANCE.md.
